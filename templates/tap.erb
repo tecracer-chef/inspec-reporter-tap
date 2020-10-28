@@ -1,0 +1,8 @@
+<%= 1 %>..<%= tests.count %>
+<% tests.each do |test|
+%><%= test.result %> <%= test.index %> <%= test.description %><%
+   if test.result == 'not ok'%>
+# message: <%= test.message %>
+# severity: <%= test.severity %><%
+     end %>
+<% end %>

@@ -1,0 +1,10 @@
+TAP version 13
+<%= 1 %>..<%= tests.count %>
+<% tests.each do |test|
+%><%= test.result %> <%= test.index %> <%= test.description %>
+<% if test.result == 'not ok' %> ---
+ message: <%= test.message %>
+ severity: <%= test.severity %>
+ ---
+<% end %><% end %>FAILED tests <%= failed_tests.map { |t| t.index }.join(', ') %>
+Failed <%= failed_tests.count %>/<%= tests.count %>, <%= format('%2.2f', percent_ok) %>% okay

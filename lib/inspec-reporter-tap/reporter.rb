@@ -1,8 +1,8 @@
-require "erb"
+require "erb" unless defined? ERB
 
 module InspecPlugins::TapReporter
   class Reporter < Inspec.plugin(2, :reporter)
-    TestResult = Struct.new(:index, :result, :description, :message, :severity, keyword_init: true) 
+    TestResult = Struct.new(:index, :result, :description, :message, :severity, keyword_init: true)
 
     attr_reader :template_erb
 
@@ -12,7 +12,7 @@ module InspecPlugins::TapReporter
       @template_erb = "tap.erb"
     end
 
-    def render      
+    def render
       tests = []
       run_data[:profiles].each do |profile|
         profile.controls.each do |control|
